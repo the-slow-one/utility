@@ -13,13 +13,13 @@
 # --- Beginning of this script config variables ---
 
 # Reset this to desired workspcace
-CONFIG_WORKING_DIR=${HOME}/llvm
+CONFIG_WORKING_DIR=${HOME}/llvm-project
 
 # Build directory for llvm
-CONFIG_BUILD_DIR=${CONFIG_WORKING_DIR}/llvm-build
+CONFIG_BUILD_DIR=${CONFIG_WORKING_DIR}/build
 
 # CPU count
-CONFIG_CPU_COUNT=6
+CONFIG_CPU_COUNT=8
  
 # --- Beginning of llvm CMake config ---
 #
@@ -29,10 +29,11 @@ CONFIG_CPU_COUNT=6
 # DLLVM_TARGETS_TO_BUILD=X86: We only care about x86 traget; this reduces biuld time
 #
 declare -a CONFIG_CMAKE_OPTS=(
-	"-DLLVM_USE_LINKER=gold"
+    "-DLLVM_USE_LINKER=gold"
     "-DLLVM_USE_SPLIT_DWARF=ON"
-	"-DLLVM_ENABLE_PROJECTS=clang"
+    "-DLLVM_ENABLE_PROJECTS=clang"
     "-DLLVM_TARGETS_TO_BUILD=X86"
+    "-DCMAKE_BUILD_TYPE=Release"
 )
 # --- Beginning of llvm CMake config ---
 
