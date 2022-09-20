@@ -1,0 +1,37 @@
+#
+# Source https://libcxx.llvm.org/BuildingLibcxx.html
+# This commmand first build the clang and use the just-built clang to build the runtime
+#
+```
+cmake -G Ninja \
+  -DLLVM_TARGETS_TO_BUILD=x86 \
+  -DLLVM_ENABLE_PROJECTS="clang;clang-tidy" \
+  -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
+  -DCMAKE_INSTALL_PREFIX="/usr/opt/local/llvm-master" \
+  ../llvm
+```
+
+#
+# This link shows how to use the newly built runtime while skipping the runtime install in the system
+# https://libcxx.llvm.org/UsingLibcxx.html#alternate-libcxx
+# 
+
+#
+# Another way to get the list of includes from a system
+# 
+```
+$ echo | g++ -Wp,-v -x c++ - -fsyntax-only
+clang -cc1 version 14.0.0 (clang-1400.0.29.102) default target x86_64-apple-darwin21.6.0
+ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include"
+ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/local/include
+ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1
+ /Library/Developer/CommandLineTools/usr/lib/clang/14.0.0/include
+ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include
+ /Library/Developer/CommandLineTools/usr/include
+ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)
+End of search list.
+```
+
