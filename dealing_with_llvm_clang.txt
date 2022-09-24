@@ -3,11 +3,13 @@
 # This commmand first build the clang and use the just-built clang to build the runtime
 #
 ```
-cmake -G Ninja \
-  -DLLVM_TARGETS_TO_BUILD=x86 \
-  -DLLVM_ENABLE_PROJECTS="clang;clang-tidy" \
-  -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
-  -DCMAKE_INSTALL_PREFIX="/usr/opt/local/llvm-master" \
+$ cmake -G "Unix Makefiles" \
+  -DLLVM_ENABLE_PROJECTS="clang" \
+  -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind;compiler-rt" \
+  -DCMAKE_INSTALL_PREFIX=/usr/local/opt/llvm-15 \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DLLVM_TARGETS_TO_BUILD=X86 \
+  -DBUILTINS_CMAKE_ARGS=-DCOMPILER_RT_ENABLE_IOS=OFF \
   ../llvm
 ```
 
