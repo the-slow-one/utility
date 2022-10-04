@@ -1,0 +1,90 @@
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+  " let vundle install vundle
+  Plugin 'VundleVim/Vundle.vim'
+  " this theme is gentle on eyes
+  Plugin 'NLKNguyen/papercolor-theme'
+  " for cool status/tabline bar plugin
+  Plugin 'vim-airline/vim-airline'
+  " well, we want more bars
+  Plugin 'vim-airline/vim-airline-themes'
+  " why manually do git status 
+  Plugin 'mhinz/vim-signify'
+  " not a bad syntax highlighting
+  Plugin 'NLKNguyen/c-syntax.vim'
+  " for the love of python
+  Plugin 'vim-python/python-syntax'
+  " what is better then CMake for C++
+  Plugin 'pboettch/vim-cmake-syntax'
+  " we are spoilt 
+  Plugin 'ycm-core/YouCompleteMe'
+call vundle#end()
+
+syntax on
+filetype plugin indent on
+
+set number		        " Show line numbers
+set linebreak		        " Break lines at word (requires Wrap lines)
+set showbreak=...	        " Wrap-broken line prefix
+set textwidth=100	        " Line wrap (number of cols)
+set showmatch		        " Highlight matching brace
+ 
+set hlsearch	                " Highlight all search results
+set smartcase	                " Enable smart-case search
+set ignorecase	                " Always case-insensitive
+set incsearch	                " Searches for strings incrementally
+ 
+set autoindent	                " Auto-indent new lines
+set cindent	                " Use 'C' style program indenting
+set expandtab	                " Use spaces instead of tabs
+set shiftwidth=2                " Number of auto-indent spaces
+set smartindent	                " Enable smart-indent
+set smarttab	                " Enable smart-tabs
+set softtabstop=2	        " Number of spaces per Tab
+ 
+set ruler	                " Show row and column ruler information
+ 
+set undolevels=1000	        " Number of undo levels
+set backspace=indent,eol,start	" Backspace behaviour
+
+set t_Co=256
+set background=dark
+colorscheme PaperColor
+set laststatus=2
+let g:airline_theme='luna'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+" for vim-signify: default updatetime 4000ms is not good for async update
+set updatetime=100
+
+" YCM semantic highlighting
+let g:ycm_enable_semantic_highlighting = 1
+" Show details diag in pop-up
+let g:ycm_show_detailed_diag_in_popup = 1
+" Disable on-hover documentation pop-up
+let g:ycm_auto_hover = ''
+"
+" When this option is set to 1, YCM's identifier completer will seed its identifier database with the
+" keywords of the programming language you're writing. Since the keywords are extracted from the Vim
+" syntax file for the filetype, all keywords may not be collected, depending on how the syntax file
+" was written. Usually at least 95% of the keywords are successfully extracted.
+"
+let g:ycm_seed_identifiers_with_syntax = 1
+
+" invole clang-format on save
+function FormatOnSave()
+  let l:formatdiff = 1
+  py3file $LLVM_INSTALL_DIR/share/clang/clang-format.py
+endfunction
+autocmd BufWritePre *.h,*.cc,*.cpp call FormatOnSave()
+
+nmap <leader>s :YcmCompleter GoToDeclaration<CR>
+nmap <leader>f :YcmCompleter GoToDefinition<CR>
+nmap <leader>i <Plug>(FixIt)
+nmap <leader>d <Plug>(YCMHover)
+
+" EOF
