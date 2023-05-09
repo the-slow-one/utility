@@ -1,7 +1,4 @@
 -- https://neovim.io/doc/user/index.html
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
 vim.opt.backspace = '2'
 vim.opt.showcmd = true
 vim.opt.laststatus = 2
@@ -16,5 +13,5 @@ vim.opt.expandtab = true
 
 vim.wo.number = true
 
-vim.cmd [[ set mouse= ]]
+vim.cmd [[ set mouse=a ]]
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
