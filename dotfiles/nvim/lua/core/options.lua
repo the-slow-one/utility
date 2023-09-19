@@ -22,4 +22,5 @@ vim.opt.number = true -- Enable line numbers
 vim.opt.splitbelow = true -- Split "right"
 vim.opt.splitright = true -- Split "right"
 
+vim.cmd( [[set mouse=]] )
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
