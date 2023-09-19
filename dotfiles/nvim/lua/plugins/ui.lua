@@ -1,6 +1,5 @@
 local function getColorScheme()
-  if os.getenv("WHITE_BACKGROUND") == "1" then
-    return  {
+  if os.getenv("WHITE_BACKGROUND") == "1" then return  {
       "pappasam/papercolor-theme-slim",
       "yorik1984/newpaper.nvim",
       lazy = false,
@@ -23,7 +22,7 @@ end
 
 local function getLuaLineTheme()
   if os.getenv("WHITE_BACKGROUND") == "1" then
-    return "onelight"
+    return "papercolor_light"
   else
     return "onedark"
   end
@@ -56,9 +55,8 @@ return {
           icons_enabled = true, theme = getLuaLineTheme(),
         },
         section = {
-          lualine_a = { 'filename', path = 1, }
+          lualine_a = { 'filename', file_status = true, path = 2, }
         },
       },
     },
 }
-

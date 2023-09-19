@@ -17,11 +17,11 @@ return {
         -- whether to show parameter hints with the inlay hints or not
         show_parameter_hints = true,
         -- prefix for parameter hints
-        parameter_hints_prefix = "<- ",
+        parameter_hints_prefix = "// param type: ",
         -- prefix for all the other hints (type, chaining)
-        other_hints_prefix = "=> ",
+        other_hints_prefix = "// other type: ",
         -- whether to align to the length of the longest line in the file
-        max_len_align = false,
+        max_len_align = true,
         -- padding from the left if max_len_align is true
         max_len_align_padding = 1,
         -- whether to align to the extreme right or not
@@ -32,29 +32,6 @@ return {
         highlight = "Comment",
         -- The highlight group priority for extmark
         priority = 100,
-      },
-      ast = {
-          -- These are unicode, should be available in any font
-          role_icons = {
-              type = "🄣",
-              declaration = "🄓",
-              expression = "🄔",
-              statement = ";",
-              specifier = "🄢",
-              ["template argument"] = "🆃",
-          },
-          kind_icons = {
-              Compound = "🄲",
-              Recovery = "🅁",
-              TranslationUnit = "🅄",
-              PackExpansion = "🄿",
-              TemplateTypeParm = "🅃",
-              TemplateTemplateParm = "🅃",
-              TemplateParamObject = "🅃",
-          },
-          highlights = {
-              detail = "Comment",
-          },
       },
       memory_usage = {
           border = "none",
