@@ -1,7 +1,6 @@
 local function getColorScheme()
   if os.getenv("WHITE_BACKGROUND") == "1" then return  {
       "pappasam/papercolor-theme-slim",
-      "yorik1984/newpaper.nvim",
       lazy = false,
       priority = 1000,  -- make sure to load this before all the other start plugins
       config = function()
@@ -30,14 +29,6 @@ end
 
 return {
     getColorScheme(),
-    {
-      "yorik1984/newpaper.nvim",
-      lazy = true,
-    },
-    {
-      "tanvirtin/monokai.nvim",
-      lazy = true,
-    },
     {
       "nvim-tree/nvim-web-devicons",
       lazy = true,

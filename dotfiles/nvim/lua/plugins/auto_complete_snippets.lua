@@ -3,8 +3,8 @@ return {
     -- A snippet provider: extend it with other snippet
     -- provider like honza/vim-snippets
     "L3MON4D3/LuaSnip",         
-    version = "2.0.0",
     lazy = true,
+    version = "2.0.0",
   },
   {
     -- Source form snippets for L3M0N4D3/LuaSnip
