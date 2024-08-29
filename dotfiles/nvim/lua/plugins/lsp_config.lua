@@ -30,7 +30,7 @@ local function get_lang_server_details()
     lua_ls = { settings = lua_lsp_settings },
     clangd = { on_attach = SetupClangExtn },
     -- lsp with generic config (includes auto-complete ability)
-    pylsp = {},
+    pyright = {},
   }
 end
 

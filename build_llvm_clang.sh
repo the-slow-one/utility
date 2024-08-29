@@ -13,13 +13,15 @@
 # --- Beginning of this script config variables ---
 
 # Reset this to desired workspcace
-CONFIG_WORKING_DIR=${HOME}/llvm-project
+CONFIG_WORKING_DIR=/export/users/dhr/llvm-project
 
 # Build directory for llvm
 CONFIG_BUILD_DIR=${CONFIG_WORKING_DIR}/build
 
 # CPU count
-CONFIG_CPU_COUNT=8
+CONFIG_CPU_COUNT=12
+
+INSTALL_DIR=${HOME}/bin
  
 # --- Beginning of llvm CMake config ---
 #
@@ -31,14 +33,14 @@ CONFIG_CPU_COUNT=8
 declare -a CONFIG_CMAKE_OPTS=(
     "-DLLVM_USE_LINKER=gold"
     "-DLLVM_USE_SPLIT_DWARF=ON"
-    "-DLLVM_ENABLE_PROJECTS=clang"
+    "-DLLVM_ENABLE_PROJECTS=clang;clang-tools-extra"
     "-DLLVM_TARGETS_TO_BUILD=X86"
     "-DCMAKE_BUILD_TYPE=Release"
+    "-DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}"
 )
-# --- Beginning of llvm CMake config ---
-
 # --- End of this script config variables ---
 
+set -x
 # Create a working directory if it don't exist
 if [ ! -d $CONFIG_WORKING_DIR ]; then
   mkdir $CONFIG_WORKING_DIR
@@ -47,8 +49,10 @@ fi
 # Move to workspace
 cd ${CONFIG_WORKING_DIR}
 
-# Clone llvm
-git clone https://github.com/llvm/llvm-project.git
+if [ ! -d llvm-project ]; then
+  # Clone llvm
+  git clone https://github.com/llvm/llvm-project.git
+fi
 
 if [ ! -d ${CONFIG_BUILD_DIR} ]; then
   # This is going to be the build directory
@@ -64,11 +68,11 @@ fi
 CMAKE_OPTS=""
 for opt in "${CONFIG_CMAKE_OPTS[@]}"
 do
-  CMAKE_OPTS+="$opt"
+  CMAKE_OPTS+="$opt "
 done
 
 # Build the Makefiles
-cmake ${CMAKE_OPTS} -j${CONFIG_CPU_COUNT} -G "Unix Makefiles" ${CONFIG_WORKING_DIR}/llvm-project/llvm
+cmake ${CMAKE_OPTS} -G "Unix Makefiles" ${CONFIG_WORKING_DIR}/llvm-project/llvm
 
 # Start the build
 make -j${CONFIG_CPU_COUNT}
