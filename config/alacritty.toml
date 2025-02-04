@@ -1,0 +1,19 @@
+[general]
+import = ["alacritty-theme/themes/nord.toml"]
+
+[terminal]
+shell = { "program" = "powershell", args = ["-command", "ssh", "deepak@server.com"] }
+
+[window]
+startup_mode = "Maximized"
+dynamic_title = true
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font Propo", style = "Regular" }
+size = 13
+
+[selection]
+save_to_clipboard = true
+
+[cursor]
+style = { shape = "Block", blinking = "On" }
