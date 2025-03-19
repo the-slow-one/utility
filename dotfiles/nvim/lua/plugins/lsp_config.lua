@@ -28,7 +28,7 @@ local function get_lang_server_details()
   return {
     -- lsp with specific config
     lua_ls = { settings = lua_lsp_settings },
-    clangd = { on_attach = SetupClangExtn },
+    clangd = {},
     -- lsp with generic config (includes auto-complete ability)
     pyright = {},
   }
@@ -43,13 +43,6 @@ function SetupLangServers(lspconfig)
     config.capabilities = lsp_autocmp_capabilites
     lspconfig[server].setup(config)
   end
-end
-
--- Helper functions for language servers
-function SetupClangExtn()
-  require("clangd_extensions").setup({})
-  require("clangd_extensions.inlay_hints").setup_autocmd()
-  require("clangd_extensions.inlay_hints").set_inlay_hints()
 end
 
 return {}

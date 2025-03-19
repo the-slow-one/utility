@@ -10,11 +10,11 @@ local function getColorScheme()
     }
   else
     return  {
-      "ellisonleao/gruvbox.nvim",
+      "shaunsingh/nord.nvim",
       lazy = false, -- make sure we load this during startup if it is your main colorscheme
       priority = 1000,  -- make sure to load this before all the other start plugins
       config = function()
-          vim.cmd( [[colorscheme gruvbox]] )
+          vim.cmd( [[colorscheme nord]] )
       end,
     }
   end
@@ -24,7 +24,7 @@ local function getLuaLineTheme()
   if os.getenv("WHITE_BACKGROUND") == "1" then
     return "papercolor_light"
   else
-    return "onedark"
+    return "nord"
   end
 end
 
