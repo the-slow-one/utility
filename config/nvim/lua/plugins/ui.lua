@@ -1,11 +1,11 @@
 local function getColorScheme()
   if os.getenv("WHITE_BACKGROUND") == "1" then return  {
-      "pappasam/papercolor-theme-slim",
+      "EdenEast/nightfox.nvim",
       lazy = false,
       priority = 1000,  -- make sure to load this before all the other start plugins
       config = function()
           vim.cmd( [[set background=light]] )
-          vim.cmd( [[colorscheme PaperColorSlim]] )
+          vim.cmd( [[colorscheme dawnfox]] )
       end,
     }
   else
@@ -22,7 +22,7 @@ end
 
 local function getLuaLineTheme()
   if os.getenv("WHITE_BACKGROUND") == "1" then
-    return "papercolor_light"
+    return "gruvbox"
   else
     return "nord"
   end
