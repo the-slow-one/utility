@@ -27,7 +27,7 @@ local function get_lang_server_details()
   -- install an LSP using brew and list it here
   return {
     -- lsp with specific config
-    lua_ls = { settings = lua_lsp_settings },
+    -- lua_ls = { settings = lua_lsp_settings },
     clangd = {},
     -- lsp with generic config (includes auto-complete ability)
     pyright = {},

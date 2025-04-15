@@ -1,12 +1,9 @@
 [general]
 import = ["alacritty-theme/themes/nord.toml"]
 
-[terminal]
-shell = { "program" = "powershell", args = ["-command", "ssh", "deepak@server.com"] }
-
 [window]
-startup_mode = "Maximized"
-dynamic_title = true
+opacity = 0.9
+blur = true
 
 [font]
 normal = { family = "JetBrainsMono Nerd Font Propo", style = "Regular" }
