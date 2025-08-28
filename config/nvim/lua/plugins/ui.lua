@@ -11,7 +11,7 @@ return {
       'lmantw/themify.nvim',
       lazy = false,
       priority = 999,
-      config = {
+      opts = {
         "pappasam/papercolor-theme-slim",
         "EdenEast/nightfox.nvim",
         "shaunsingh/nord.nvim",
