@@ -53,6 +53,7 @@ format = '\[[$symbol($version)]($style)\] '
 
 [directory]
 truncation_symbol = '.../'
+style = 'bold blue'
 repo_root_style = 'bold purple'
 use_logical_path = true
 repo_root_format = '[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) '
