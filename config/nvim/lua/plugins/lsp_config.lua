@@ -41,7 +41,7 @@ function SetupLangServers(lspconfig)
   for server, config in pairs(get_lang_server_details()) do
     -- Autocomplete capabilities are added to all servers by default
     config.capabilities = lsp_autocmp_capabilites
-    lspconfig[server].setup(config)
+    lspconfig[server] = config
   end
 end
 

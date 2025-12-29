@@ -7,7 +7,7 @@ return {
   },
   config = function()
     require("nvim-treesitter").setup({})
-    lspconfig = require("lspconfig")
+    lspconfig = vim.lsp.config
     SetupLangServers(lspconfig)
   end
 }
