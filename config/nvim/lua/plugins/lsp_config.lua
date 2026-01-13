@@ -28,7 +28,27 @@ local function get_lang_server_details()
   return {
     -- lsp with specific config
     -- lua_ls = { settings = lua_lsp_settings },
-    clangd = {},
+    clangd = {
+        cmd = { '/home/deepakhr/bin/clangd' },
+        filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
+        root_markers = {
+            '.clangd',
+            '.clang-tidy',
+            '.clang-format',
+            'compile_commands.json',
+            'compile_flags.txt',
+            'configure.ac', -- AutoTools
+            '.git',
+        },
+        capabilities = {
+            textDocument = {
+                completion = {
+                    editsNearCursor = true,
+                },
+            },
+            offsetEncoding = { 'utf-8', 'utf-16' },
+        },
+    },
     -- lsp with generic config (includes auto-complete ability)
     pyright = {},
   }
