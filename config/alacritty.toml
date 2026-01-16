@@ -1,15 +1,16 @@
 [general]
-import = ["alacritty_themes/themes/rose_pine_dawn.toml"]
+import = ["alacritty_themes/themes/rose_pine.toml"]
 
 [window]
 decorations = "Buttonless"
-startup_mode = "Maximized"
-opacity = 0.75
-blur = true
+startup_mode = "Fullscreen"
+decorations_theme_variant = "light"
+opacity = 1.0
+blur = false
 
 [font]
-normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
-size = 15
+normal = { family = "JetBrainsMono Nerd Font", style = "Light" }
+size = 16
 
 [selection]
 save_to_clipboard = true
