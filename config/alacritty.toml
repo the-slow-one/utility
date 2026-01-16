@@ -1,5 +1,5 @@
 [general]
-import = ["alacritty_themes/themes/rose_pine.toml"]
+import = ["alacritty_themes/themes/monakai.toml"]
 
 [window]
 decorations = "Buttonless"
@@ -9,8 +9,8 @@ opacity = 1.0
 blur = false
 
 [font]
-normal = { family = "JetBrainsMono Nerd Font", style = "Light" }
-size = 16
+normal = { family = "JetBrainsMono Nerd Font", style = "Medium" }
+size = 14
 
 [selection]
 save_to_clipboard = true

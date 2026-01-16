@@ -7,7 +7,7 @@ return {
   },
   config = function()
     require("nvim-treesitter").setup({})
-    lspconfig = vim.lsp.config
-    SetupLangServers(lspconfig)
+    vim.lsp.enable("clangd")
+    vim.lsp.enable("pyright")
   end
 }
