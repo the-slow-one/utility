@@ -1,5 +1,15 @@
 #!/usr/bin/sh
 
+###############################################################################
+# Warning: If you run this script as sudoer/root package might get install as #
+# root user                                                                   #
+###############################################################################
+
+if [ "$(id -u)" -eq 0 ]; then
+   echo "Error: This script must NOT be run as root or with sudo."
+   exit 1
+fi
+
 sudo dnf update -y
 # Install basics
 sudo dnf install -y neovim tmux git clang clang-tools-extra git cmake
@@ -28,7 +38,7 @@ sudo curl -sS https://starship.rs/install.sh | sh -s -- -y
 echo 'eval "$(starship init bash)"' >> ~/.bashrc
 
 # Setup neovim
-sudo dnf install -y fd-find ripgrep luarocks pip3 rubygems ruby-devel 
+sudo dnf install -y fd-find ripgrep luarocks pip3 rubygems ruby-devel
 
 # neovim perl provider is disabled
 #sudo dnf install -y cpanm
