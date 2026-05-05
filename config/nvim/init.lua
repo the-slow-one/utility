@@ -16,7 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 
 require("core.options")
-require("core.keybinds")
 
 require("lazy").setup({
     { import = "plugins" }

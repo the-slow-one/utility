@@ -71,26 +71,26 @@ return {
     },
     -- Lazy-load on any <leader>d keybinding
     keys = {
-      { "<leader>dc",  desc = "DAP: Continue / Start" },
-      { "<leader>dC",  desc = "DAP: Run to Cursor" },
-      { "<leader>di",  desc = "DAP: Step Into" },
-      { "<leader>do",  desc = "DAP: Step Over" },
-      { "<leader>dO",  desc = "DAP: Step Out" },
-      { "<leader>dl",  desc = "DAP: Run Last" },
-      { "<leader>dr",  desc = "DAP: Restart" },
-      { "<leader>dx",  desc = "DAP: Terminate" },
-      { "<leader>db",  desc = "DAP: Toggle Breakpoint" },
-      { "<leader>dB",  desc = "DAP: Conditional Breakpoint" },
-      { "<leader>dL",  desc = "DAP: Log-point" },
-      { "<leader>dxb", desc = "DAP: Clear All Breakpoints" },
-      { "<leader>du",  desc = "DAP: Toggle UI" },
-      { "<leader>de",  desc = "DAP: Eval",  mode = { "n", "v" } },
+      { "<leader>dc",  desc = "Debug: Continue / Start" },
+      { "<leader>dC",  desc = "Debug: Run to Cursor" },
+      { "<leader>di",  desc = "Debug: Step Into" },
+      { "<leader>do",  desc = "Debug: Step Over" },
+      { "<leader>dO",  desc = "Debug: Step Out" },
+      { "<leader>dl",  desc = "Debug: Run Last" },
+      { "<leader>dr",  desc = "Debug: Restart" },
+      { "<leader>dx",  desc = "Debug: Terminate" },
+      { "<leader>db",  desc = "Debug: Toggle Breakpoint" },
+      { "<leader>dB",  desc = "Debug: Conditional Breakpoint" },
+      { "<leader>dL",  desc = "Debug: Log-point" },
+      { "<leader>dxb", desc = "Debug: Clear All Breakpoints" },
+      { "<leader>du",  desc = "Debug: Toggle UI" },
+      { "<leader>de",  desc = "Debug: Eval",  mode = { "n", "v" } },
       -- telescope-dap pickers
-      { "<leader>dtc", desc = "DAP: Telescope Commands" },
-      { "<leader>dtf", desc = "DAP: Telescope Configurations" },
-      { "<leader>dtb", desc = "DAP: Telescope Breakpoints" },
-      { "<leader>dtv", desc = "DAP: Telescope Variables" },
-      { "<leader>dts", desc = "DAP: Telescope Frames (Stack)" },
+      { "<leader>dtc", desc = "Debug: Telescope Commands" },
+      { "<leader>dtf", desc = "Debug: Telescope Configurations" },
+      { "<leader>dtb", desc = "Debug: Telescope Breakpoints" },
+      { "<leader>dtv", desc = "Debug: Telescope Variables" },
+      { "<leader>dts", desc = "Debug: Telescope Frames (Stack)" },
     },
 
     config = function()
@@ -299,41 +299,41 @@ return {
       end
 
       -- Session control
-      map("<leader>dc",  dap.continue,       "DAP: Continue / Start")
-      map("<leader>dC",  dap.run_to_cursor,  "DAP: Run to Cursor")
-      map("<leader>di",  dap.step_into,      "DAP: Step Into")
-      map("<leader>do",  dap.step_over,      "DAP: Step Over")
-      map("<leader>dO",  dap.step_out,       "DAP: Step Out")
-      map("<leader>dl",  dap.run_last,       "DAP: Run Last")
-      map("<leader>dr",  dap.restart,        "DAP: Restart")
-      map("<leader>dx",  dap.terminate,      "DAP: Terminate")
+      map("<leader>dc",  dap.continue,       "Debug: Continue / Start")
+      map("<leader>dC",  dap.run_to_cursor,  "Debug: Run to Cursor")
+      map("<leader>di",  dap.step_into,      "Debug: Step Into")
+      map("<leader>do",  dap.step_over,      "Debug: Step Over")
+      map("<leader>dO",  dap.step_out,       "Debug: Step Out")
+      map("<leader>dl",  dap.run_last,       "Debug: Run Last")
+      map("<leader>dr",  dap.restart,        "Debug: Restart")
+      map("<leader>dx",  dap.terminate,      "Debug: Terminate")
 
       -- Breakpoints
-      map("<leader>db",  dap.toggle_breakpoint, "DAP: Toggle Breakpoint")
+      map("<leader>db",  dap.toggle_breakpoint, "Debug: Toggle Breakpoint")
       map("<leader>dB",  function()
         dap.set_breakpoint(vim.fn.input("Condition: "))
-      end, "DAP: Conditional Breakpoint")
+      end, "Debug: Conditional Breakpoint")
       map("<leader>dL",  function()
         dap.set_breakpoint(nil, nil, vim.fn.input("Log message: "))
-      end, "DAP: Log-point")
-      map("<leader>dxb", dap.clear_breakpoints, "DAP: Clear All Breakpoints")
+      end, "Debug: Log-point")
+      map("<leader>dxb", dap.clear_breakpoints, "Debug: Clear All Breakpoints")
 
       -- Toggle the full DAP UI
-      map("<leader>du",  dapui.toggle, "DAP: Toggle UI")
+      map("<leader>du",  dapui.toggle, "Debug: Toggle UI")
 
       -- Evaluate expression under cursor (normal) or visual selection
-      map("<leader>de", function() dapui.eval() end, "DAP: Eval Expression")
-      map("<leader>de", function() dapui.eval() end, "DAP: Eval Selection", "v")
+      map("<leader>de", function() dapui.eval() end, "Debug: Eval Expression")
+      map("<leader>de", function() dapui.eval() end, "Debug: Eval Selection", "v")
 
       -- ── telescope-dap pickers ────────────────────────────────────────────
       -- telescope-dap overrides the DAP internal UI, so these pickers also
       -- drive any built-in dap prompts (e.g. selecting a configuration on :DapContinue).
       local tdap = require("telescope").extensions.dap
-      map("<leader>dtc", tdap.commands,          "DAP: Telescope Commands")
-      map("<leader>dtf", tdap.configurations,    "DAP: Telescope Configurations")
-      map("<leader>dtb", tdap.list_breakpoints,  "DAP: Telescope Breakpoints")
-      map("<leader>dtv", tdap.variables,         "DAP: Telescope Variables")
-      map("<leader>dts", tdap.frames,            "DAP: Telescope Frames (Stack)")
+      map("<leader>dtc", tdap.commands,          "Debug: Telescope Commands")
+      map("<leader>dtf", tdap.configurations,    "Debug: Telescope Configurations")
+      map("<leader>dtb", tdap.list_breakpoints,  "Debug: Telescope Breakpoints")
+      map("<leader>dtv", tdap.variables,         "Debug: Telescope Variables")
+      map("<leader>dts", tdap.frames,            "Debug: Telescope Frames (Stack)")
 
     end,
   },

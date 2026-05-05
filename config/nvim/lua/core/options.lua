@@ -30,7 +30,7 @@ vim.opt.spelllang = { 'en_us' }
 
 vim.cmd( [[set mouse=]] )
 vim.cmd( [[set noswapfile]] )
-vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>', { desc="Clear search highlight"})
+vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>', { desc="Option: Clear search highlight"})
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*" },
