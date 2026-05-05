@@ -27,6 +27,7 @@ return {
         ---@type snacks.Config
         opts = {
             bigfile = { enabled = true },
+            image = { enabled = false },
             dashboard = { enabled = true },
             explorer = { enabled = false },
             indent = { enabled = true },
@@ -42,9 +43,9 @@ return {
             statuscolumn = { enabled = true },
             words = { enabled = true },
             styles = {
-            notification = {
-                -- wo = { wrap = true } -- Wrap notifications
-            }
+                notification = {
+                    -- wo = { wrap = true } -- Wrap notifications
+                }
             }
         },
         keys = {
