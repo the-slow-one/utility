@@ -1,5 +1,5 @@
 [general]
-import = ["alacritty_themes/themes/monokai_charcoal.toml"]
+import = ["alacritty_themes/themes/ganbaru.toml"]
 
 [window]
 decorations = "Buttonless"
@@ -9,8 +9,8 @@ opacity = 1.0
 blur = false
 
 [font]
-normal = { family = "JetBrainsMono Nerd Font", style = "Medium" }
-size = 14
+normal = { family = "JetBrainsMono Nerd Font Mono", style = "Italic" }
+size = 16
 
 [selection]
 save_to_clipboard = true

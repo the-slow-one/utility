@@ -1,38 +1,43 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  lazy = true,
-  opts = {
-    ensure_installed = { "c", "c++", "python"},
+  build = ":TSUpdate",
+  lazy = false,   -- treesitter does not support lazy loading
+  config = function()
+    require("nvim-treesitter").setup({
 
-    -- Install parsers synchronously (only applied to `ensure_installed`)
-    sync_install = true,
+      ensure_installed = {
+        "c",       -- C
+        "cpp",     -- C++
+        "python",  -- Python
+        -- recommended to also keep these
+        "vim",
+        "vimdoc",
+        "query",
+        "lua",
+      },
 
-    -- Automatically install missing parsers when entering buffer
-    -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-    auto_install = true,
+      -- Install parsers synchronously (first time only)
+      sync_install = false,
 
-    highlight = {
-      enable = true,
+      -- Auto-install missing parsers when opening a file
+      auto_install = true,
 
-      -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-      -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-      -- the name of the parser)
-      -- list of language that will be disabled
-      -- disable = { "c", "rust" },
-      -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
-      disable = function(lang, buf)
+      highlight = {
+        enable = true,
+
+        -- Disable for very large files (optional, prevents slowdowns)
+        disable = function(lang, buf)
           local max_filesize = 100 * 1024 -- 100 KB
           local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
           if ok and stats and stats.size > max_filesize then
-              return true
+            return true
           end
-      end,
+        end,
 
-      -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-      -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-      -- Using this option may slow down your editor, and you may see some duplicate highlights.
-      -- Instead of true it can also be a list of languages
-      additional_vim_regex_highlighting = false,
-    },
-  }
+        -- Some people also use this to prevent double-highlighting
+        -- when a treesitter parser exists for the language.
+        additional_vim_regex_highlighting = false,
+      },
+    })
+  end,
 }
